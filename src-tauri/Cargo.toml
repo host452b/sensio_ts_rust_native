@@ -1,0 +1,32 @@
+[package]
+name = "sensio"
+version = "0.1.0"
+description = "Local-first PDF reading and search workspace"
+authors = ["Sensio"]
+license = ""
+repository = ""
+edition = "2021"
+rust-version = "1.82"
+build = "build.rs"
+
+[lib]
+name = "sensio_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+chrono = { version = "0.4", default-features = false, features = ["clock"] }
+lopdf = "0.34"
+rusqlite = { version = "0.32", features = ["bundled"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+specta = { version = "=2.0.0-rc.22" }
+specta-typescript = "0.0.9"
+tauri = { version = "2", features = ["specta"] }
+tauri-plugin-dialog = "2"
+tauri-specta = { version = "=2.0.0-rc.21", features = ["derive", "typescript"] }
+thiserror = "2"
+tokio = { version = "1", features = ["fs", "macros", "rt-multi-thread", "sync"] }
+uuid = { version = "1", features = ["v4"] }

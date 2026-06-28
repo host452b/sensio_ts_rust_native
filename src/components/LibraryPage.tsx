@@ -112,12 +112,12 @@ export function LibraryPage() {
       <aside className="sidebar" aria-label="资料库控制">
         <div className="brand-block">
           <div className="brand-mark" aria-hidden="true">
-            <span>d</span>
-            <small>STRN</small>
+            <span>S</span>
+            <small>PDF</small>
           </div>
           <div>
             <div className="brand-title">Sensio</div>
-            <div className="brand-subtitle">本地 PDF 资料库</div>
+            <div className="brand-subtitle">私人 PDF 资料库</div>
           </div>
         </div>
 
@@ -139,7 +139,10 @@ export function LibraryPage() {
         </section>
 
         <section className="control-group">
-          <label htmlFor="import-path">导入 PDF</label>
+          <div className="control-heading">
+            <label htmlFor="import-path">导入 PDF</label>
+            <span>复制到本地资料库，原文件保持不变。</span>
+          </div>
           <textarea
             id="import-path"
             value={importPath}
@@ -166,7 +169,10 @@ export function LibraryPage() {
         </section>
 
         <section className="control-group">
-          <label htmlFor="export-path">导出副本</label>
+          <div className="control-heading">
+            <label htmlFor="export-path">导出副本</label>
+            <span>从当前选中文档导出一份独立副本。</span>
+          </div>
           <textarea
             id="export-path"
             value={exportPath}
@@ -205,8 +211,8 @@ export function LibraryPage() {
       <section className="library-panel">
         <header className="toolbar">
           <div className="toolbar-title">
-            <p>资料库</p>
-            <h1>文档</h1>
+            <p>私人资料库</p>
+            <h1>文档陈列</h1>
             <div className="metric-row" aria-label="资料库统计">
               <span>{documents.data?.total ?? 0} 个文件</span>
               <span>{formatBytes(visibleFileSize)}</span>
@@ -277,7 +283,7 @@ export function LibraryPage() {
                   window.location.hash = readerHash(selectedDocument.id);
                 }}
               >
-                打开阅读器
+                进入阅读
               </button>
             </header>
             <PdfViewer documentId={selectedDocument.id} compact />
@@ -312,7 +318,7 @@ function DocumentCollection({
           PDF
         </div>
         <h2>{hasSearch ? "没有匹配文档" : "还没有文档"}</h2>
-        <p>{hasSearch ? "调整搜索条件后再试。" : "导入 PDF 后会显示在这里。"}</p>
+        <p>{hasSearch ? "调整搜索条件后再试。" : "导入 PDF 后，它会安静地陈列在这里。"}</p>
       </div>
     );
   }
@@ -335,8 +341,14 @@ function DocumentCollection({
             <strong title={document.title}>{document.title}</strong>
             <span title={document.file_name}>{document.file_name}</span>
             <div className="document-facts">
-              <small>{formatBytes(document.file_size)}</small>
-              <small>{formatDate(document.imported_at)}</small>
+              <small>
+                <span>大小</span>
+                {formatBytes(document.file_size)}
+              </small>
+              <small>
+                <span>入库</span>
+                {formatDate(document.imported_at)}
+              </small>
             </div>
           </div>
         </button>

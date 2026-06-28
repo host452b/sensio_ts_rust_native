@@ -27,6 +27,10 @@
   },
   "bundle": {
     "active": true,
-    "targets": ["app"]
+    "targets": ["app"],
+    "resources": {
+      "../third_party/lxgw-neoxihei-v1.303/LICENSE.md": "licenses/lxgw-neoxihei-v1.303/LICENSE.md",
+      "../third_party/lxgw-neoxihei-v1.303/LICENSE_CHS.md": "licenses/lxgw-neoxihei-v1.303/LICENSE_CHS.md"
+    }
   }
 }

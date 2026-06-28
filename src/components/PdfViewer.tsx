@@ -97,6 +97,7 @@ export function PdfViewer({ documentId, compact = false }: PdfViewerProps) {
     <div className={compact ? "pdf-viewer compact" : "pdf-viewer"}>
       <div className="pdf-toolbar">
         <button
+          className="zoom-button"
           type="button"
           aria-label="缩小"
           onClick={() => setScale((value) => Math.max(0.55, value - 0.1))}
@@ -105,6 +106,7 @@ export function PdfViewer({ documentId, compact = false }: PdfViewerProps) {
         </button>
         <span aria-live="polite">{Math.round(scale * 100)}%</span>
         <button
+          className="zoom-button"
           type="button"
           aria-label="放大"
           onClick={() => setScale((value) => Math.min(2.2, value + 0.1))}

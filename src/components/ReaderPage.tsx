@@ -24,7 +24,11 @@ export function ReaderPage({ documentId }: ReaderPageProps) {
   return (
     <main className="reader-page">
       <header className="reader-header">
-        <button className="text-button" type="button" onClick={() => (window.location.hash = "#/")}>
+        <button
+          className="text-button reader-back-button"
+          type="button"
+          onClick={() => (window.location.hash = "#/")}
+        >
           资料库
         </button>
         <div className="reader-header-title">
@@ -33,7 +37,9 @@ export function ReaderPage({ documentId }: ReaderPageProps) {
           <span>{document?.file_name ?? documentId}</span>
         </div>
       </header>
-      <PdfViewer documentId={documentId} />
+      <section className="reader-stage" aria-label="PDF 阅读区">
+        <PdfViewer documentId={documentId} />
+      </section>
     </main>
   );
 }
